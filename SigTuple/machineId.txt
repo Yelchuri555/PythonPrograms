@@ -1,0 +1,13 @@
+IMAGES  x86_64  2018-08-06T11:36:27.000Z        TESTdatanode2-6aug18    False   xen     ami-026e1c6ff82a142a2   989716052998/TESTdatanode2-6aug18       machine TESTdatanode2-6aug18    989716052998    False   /dev/sda1       ebs     available       hvm
+BLOCKDEVICEMAPPINGS     /dev/sda1
+EBS     True    False   snap-0340029ea8e64889b  40      standard
+BLOCKDEVICEMAPPINGS     /dev/sdb
+EBS     True    False   snap-067abfcb82da4f312  200     standard
+PRODUCTCODES    aw0evgkw8e5c1q413zgy5pjce       marketplace
+
+IMAGES  x86_64  2018-08-06T11:36:27.000Z        TESTdatanode2-6aug18    False   xen     ami-020e1c6ff82a142a2   989716052998/TESTdatanode2-6aug18       machine TESTdatanode2-6aug18    989716052998    False   /dev/sda1       ebs     available       hvm
+BLOCKDEVICEMAPPINGS     /dev/sda1
+EBS     True    False   snap-0340029ea8e64886b  40      standard
+BLOCKDEVICEMAPPINGS     /dev/sdb
+EBS     True    False   snap-067abfcb82da4f311  200     standard
+PRODUCTCODES    aw0evgkw8e5c1q413zgy5pjce       marketplace

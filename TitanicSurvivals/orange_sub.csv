@@ -1,0 +1,421 @@
+Name,Ticket,Cabin,PassengerId,Logistic Regression,Selected
+string,string,string,continuous,discrete,discrete
+meta,meta,meta,meta,meta,meta
+"Kelly, Mr. James",330911,,892.0,0,No
+"Wilkes, Mrs. James (Ellen Needs)",363272,,893.0,0,No
+"Myles, Mr. Thomas Francis",240276,,894.0,0,No
+"Wirz, Mr. Albert",315154,,895.0,0,No
+"Hirvonen, Mrs. Alexander (Helga E Lindqvist)",3101298,,896.0,1,No
+"Svensson, Mr. Johan Cervin",7538,,897.0,0,No
+"Connolly, Miss. Kate",330972,,898.0,1,No
+"Caldwell, Mr. Albert Francis",248738,,899.0,0,No
+"Abrahim, Mrs. Joseph (Sophie Halaut Easu)",2657,,900.0,1,No
+"Davies, Mr. John Samuel",A/4 48871,,901.0,0,No
+"Ilieff, Mr. Ylio",349220,,902.0,0,No
+"Jones, Mr. Charles Cresson",694,,903.0,0,No
+"Snyder, Mrs. John Pillsbury (Nelle Stevenson)",21228,B45,904.0,1,No
+"Howard, Mr. Benjamin",24065,,905.0,0,No
+"Chaffee, Mrs. Herbert Fuller (Carrie Constance Toogood)",W.E.P. 5734,E31,906.0,1,No
+"del Carlo, Mrs. Sebastiano (Argenia Genovesi)",SC/PARIS 2167,,907.0,1,No
+"Keane, Mr. Daniel",233734,,908.0,0,No
+"Assaf, Mr. Gerios",2692,,909.0,0,No
+"Ilmakangas, Miss. Ida Livija",STON/O2. 3101270,,910.0,1,No
+"Assaf Khalil, Mrs. Mariana (Miriam"")""""""",2696,,911.0,1,No
+"Rothschild, Mr. Martin",PC 17603,,912.0,0,No
+"Olsen, Master. Artur Karl",C 17368,,913.0,0,No
+"Flegenheim, Mrs. Alfred (Antoinette)",PC 17598,,914.0,1,No
+"Williams, Mr. Richard Norris II",PC 17597,,915.0,1,No
+"Ryerson, Mrs. Arthur Larned (Emily Maria Borie)",PC 17608,B57 B59 B63 B66,916.0,1,No
+"Robins, Mr. Alexander A",A/5. 3337,,917.0,0,No
+"Ostby, Miss. Helene Ragnhild",113509,B36,918.0,1,No
+"Daher, Mr. Shedid",2698,,919.0,0,No
+"Brady, Mr. John Bertram",113054,A21,920.0,0,No
+"Samaan, Mr. Elias",2662,,921.0,0,No
+"Louch, Mr. Charles Alexander",SC/AH 3085,,922.0,0,No
+"Jefferys, Mr. Clifford Thomas",C.A. 31029,,923.0,0,No
+"Dean, Mrs. Bertram (Eva Georgetta Light)",C.A. 2315,,924.0,0,No
+"Johnston, Mrs. Andrew G (Elizabeth Lily"" Watson)""""""",W./C. 6607,,925.0,0,No
+"Mock, Mr. Philipp Edmund",13236,C78,926.0,0,No
+"Katavelas, Mr. Vassilios (Catavelas Vassilios"")""""""",2682,,927.0,0,No
+"Roth, Miss. Sarah A",342712,,928.0,1,No
+"Cacic, Miss. Manda",315087,,929.0,1,No
+"Sap, Mr. Julius",345768,,930.0,0,No
+"Hee, Mr. Ling",1601,,931.0,0,No
+"Karun, Mr. Franz",349256,,932.0,0,No
+"Franklin, Mr. Thomas Parham",113778,D34,933.0,0,No
+"Goldsmith, Mr. Nathan",SOTON/O.Q. 3101263,,934.0,0,No
+"Corbett, Mrs. Walter H (Irene Colvin)",237249,,935.0,1,No
+"Kimball, Mrs. Edwin Nelson Jr (Gertrude Parsons)",11753,D19,936.0,1,No
+"Peltomaki, Mr. Nikolai Johannes",STON/O 2. 3101291,,937.0,0,No
+"Chevre, Mr. Paul Romaine",PC 17594,A9,938.0,0,No
+"Shaughnessy, Mr. Patrick",370374,,939.0,0,No
+"Bucknell, Mrs. William Robert (Emma Eliza Ward)",11813,D15,940.0,1,No
+"Coutts, Mrs. William (Winnie Minnie"" Treanor)""""""",C.A. 37671,,941.0,1,No
+"Smith, Mr. Lucien Philip",13695,C31,942.0,0,No
+"Pulbaum, Mr. Franz",SC/PARIS 2168,,943.0,0,No
+"Hocking, Miss. Ellen Nellie""""""""",29105,,944.0,1,No
+"Fortune, Miss. Ethel Flora",19950,C23 C25 C27,945.0,1,No
+"Mangiavacchi, Mr. Serafino Emilio",SC/A.3 2861,,946.0,0,No
+"Rice, Master. Albert",382652,,947.0,0,No
+"Cor, Mr. Bartol",349230,,948.0,0,No
+"Abelseth, Mr. Olaus Jorgensen",348122,F G63,949.0,0,No
+"Davison, Mr. Thomas Henry",386525,,950.0,0,No
+"Chaudanson, Miss. Victorine",PC 17608,B61,951.0,1,No
+"Dika, Mr. Mirko",349232,,952.0,0,No
+"McCrae, Mr. Arthur Gordon",237216,,953.0,0,No
+"Bjorklund, Mr. Ernst Herbert",347090,,954.0,0,No
+"Bradley, Miss. Bridget Delia",334914,,955.0,1,No
+"Ryerson, Master. John Borie",PC 17608,B57 B59 B63 B66,956.0,1,No
+"Corey, Mrs. Percy C (Mary Phyllis Elizabeth Miller)",F.C.C. 13534,,957.0,1,No
+"Burns, Miss. Mary Delia",330963,,958.0,1,No
+"Moore, Mr. Clarence Bloomfield",113796,,959.0,0,No
+"Tucker, Mr. Gilbert Milligan Jr",2543,C53,960.0,1,No
+"Fortune, Mrs. Mark (Mary McDougald)",19950,C23 C25 C27,961.0,1,No
+"Mulvihill, Miss. Bertha E",382653,,962.0,1,No
+"Minkoff, Mr. Lazar",349211,,963.0,0,No
+"Nieminen, Miss. Manta Josefina",3101297,,964.0,1,No
+"Ovies y Rodriguez, Mr. Servando",PC 17562,D43,965.0,1,No
+"Geiger, Miss. Amalie",113503,C130,966.0,1,No
+"Keeping, Mr. Edwin",113503,C132,967.0,1,No
+"Miles, Mr. Frank",359306,,968.0,0,No
+"Cornell, Mrs. Robert Clifford (Malvina Helen Lamson)",11770,C101,969.0,1,No
+"Aldworth, Mr. Charles Augustus",248744,,970.0,0,No
+"Doyle, Miss. Elizabeth",368702,,971.0,1,No
+"Boulos, Master. Akar",2678,,972.0,0,No
+"Straus, Mr. Isidor",PC 17483,C55 C57,973.0,0,No
+"Case, Mr. Howard Brown",19924,,974.0,0,No
+"Demetri, Mr. Marinko",349238,,975.0,0,No
+"Lamb, Mr. John Joseph",240261,,976.0,0,No
+"Khalil, Mr. Betros",2660,,977.0,0,No
+"Barry, Miss. Julia",330844,,978.0,1,No
+"Badman, Miss. Emily Louisa",A/4 31416,,979.0,1,No
+"O'Donoghue, Ms. Bridget",364856,,980.0,1,No
+"Wells, Master. Ralph Lester",29103,,981.0,0,No
+"Dyker, Mrs. Adolf Fredrik (Anna Elisabeth Judith Andersson)",347072,,982.0,1,No
+"Pedersen, Mr. Olaf",345498,,983.0,0,No
+"Davidson, Mrs. Thornton (Orian Hays)",F.C. 12750,B71,984.0,1,No
+"Guest, Mr. Robert",376563,,985.0,0,No
+"Birnbaum, Mr. Jakob",13905,,986.0,1,No
+"Tenglin, Mr. Gunnar Isidor",350033,,987.0,0,No
+"Cavendish, Mrs. Tyrell William (Julia Florence Siegel)",19877,C46,988.0,1,No
+"Makinen, Mr. Kalle Edvard",STON/O 2. 3101268,,989.0,0,No
+"Braf, Miss. Elin Ester Maria",347471,,990.0,1,No
+"Nancarrow, Mr. William Henry",A./5. 3338,,991.0,0,No
+"Stengel, Mrs. Charles Emil Henry (Annie May Morris)",11778,C116,992.0,1,No
+"Weisz, Mr. Leopold",228414,,993.0,0,No
+"Foley, Mr. William",365235,,994.0,0,No
+"Johansson Palmquist, Mr. Oskar Leander",347070,,995.0,0,No
+"Thomas, Mrs. Alexander (Thamine Thelma"")""""""",2625,,996.0,1,No
+"Holthen, Mr. Johan Martin",C 4001,,997.0,0,No
+"Buckley, Mr. Daniel",330920,,998.0,0,No
+"Ryan, Mr. Edward",383162,,999.0,0,No
+"Willer, Mr. Aaron (Abi Weller"")""""""",3410,,1000.0,0,No
+"Swane, Mr. George",248734,F,1001.0,0,No
+"Stanton, Mr. Samuel Ward",237734,,1002.0,0,No
+"Shine, Miss. Ellen Natalia",330968,,1003.0,1,No
+"Evans, Miss. Edith Corse",PC 17531,A29,1004.0,1,No
+"Buckley, Miss. Katherine",329944,,1005.0,1,No
+"Straus, Mrs. Isidor (Rosalie Ida Blun)",PC 17483,C55 C57,1006.0,1,No
+"Chronopoulos, Mr. Demetrios",2680,,1007.0,0,No
+"Thomas, Mr. John",2681,,1008.0,0,No
+"Sandstrom, Miss. Beatrice Irene",PP 9549,G6,1009.0,1,No
+"Beattie, Mr. Thomson",13050,C6,1010.0,1,No
+"Chapman, Mrs. John Henry (Sara Elizabeth Lawry)",SC/AH 29037,,1011.0,1,No
+"Watt, Miss. Bertha J",C.A. 33595,,1012.0,1,No
+"Kiernan, Mr. John",367227,,1013.0,0,No
+"Schabert, Mrs. Paul (Emma Mock)",13236,C28,1014.0,1,No
+"Carver, Mr. Alfred John",392095,,1015.0,0,No
+"Kennedy, Mr. John",368783,,1016.0,0,No
+"Cribb, Miss. Laura Alice",371362,,1017.0,1,No
+"Brobeck, Mr. Karl Rudolf",350045,,1018.0,0,No
+"McCoy, Miss. Alicia",367226,,1019.0,1,No
+"Bowenur, Mr. Solomon",211535,,1020.0,0,No
+"Petersen, Mr. Marius",342441,,1021.0,0,No
+"Spinner, Mr. Henry John",STON/OQ. 369943,,1022.0,0,No
+"Gracie, Col. Archibald IV",113780,C51,1023.0,0,No
+"Lefebre, Mrs. Frank (Frances)",4133,,1024.0,1,No
+"Thomas, Mr. Charles P",2621,,1025.0,0,No
+"Dintcheff, Mr. Valtcho",349226,,1026.0,0,No
+"Carlsson, Mr. Carl Robert",350409,,1027.0,0,No
+"Zakarian, Mr. Mapriededer",2656,,1028.0,0,No
+"Schmidt, Mr. August",248659,,1029.0,0,No
+"Drapkin, Miss. Jennie",SOTON/OQ 392083,,1030.0,1,No
+"Goodwin, Mr. Charles Frederick",CA 2144,,1031.0,0,No
+"Goodwin, Miss. Jessie Allis",CA 2144,,1032.0,0,No
+"Daniels, Miss. Sarah",113781,,1033.0,1,No
+"Ryerson, Mr. Arthur Larned",PC 17608,B57 B59 B63 B66,1034.0,0,No
+"Beauchamp, Mr. Henry James",244358,,1035.0,0,No
+"Lindeberg-Lind, Mr. Erik Gustaf (Mr Edward Lingrey"")""""""",17475,,1036.0,0,No
+"Vander Planke, Mr. Julius",345763,,1037.0,0,No
+"Hilliard, Mr. Herbert Henry",17463,E46,1038.0,0,No
+"Davies, Mr. Evan",SC/A4 23568,,1039.0,0,No
+"Crafton, Mr. John Bertram",113791,,1040.0,0,No
+"Lahtinen, Rev. William",250651,,1041.0,0,No
+"Earnshaw, Mrs. Boulton (Olive Potter)",11767,C54,1042.0,1,No
+"Matinoff, Mr. Nicola",349255,,1043.0,0,No
+"Storey, Mr. Thomas",3701,,1044.0,0,No
+"Klasen, Mrs. (Hulda Kristina Eugenia Lofqvist)",350405,,1045.0,1,No
+"Asplund, Master. Filip Oscar",347077,,1046.0,0,No
+"Duquemin, Mr. Joseph",S.O./P.P. 752,,1047.0,0,No
+"Bird, Miss. Ellen",PC 17483,C97,1048.0,1,No
+"Lundin, Miss. Olga Elida",347469,,1049.0,1,No
+"Borebank, Mr. John James",110489,D22,1050.0,0,No
+"Peacock, Mrs. Benjamin (Edith Nile)",SOTON/O.Q. 3101315,,1051.0,1,No
+"Smyth, Miss. Julia",335432,,1052.0,1,No
+"Touma, Master. Georges Youssef",2650,,1053.0,0,No
+"Wright, Miss. Marion",220844,,1054.0,1,No
+"Pearce, Mr. Ernest",343271,,1055.0,0,No
+"Peruschitz, Rev. Joseph Maria",237393,,1056.0,0,No
+"Kink-Heilmann, Mrs. Anton (Luise Heilmann)",315153,,1057.0,1,No
+"Brandeis, Mr. Emil",PC 17591,B10,1058.0,0,No
+"Ford, Mr. Edward Watson",W./C. 6608,,1059.0,0,No
+"Cassebeer, Mrs. Henry Arthur Jr (Eleanor Genevieve Fosdick)",17770,,1060.0,1,No
+"Hellstrom, Miss. Hilda Maria",7548,,1061.0,1,No
+"Lithman, Mr. Simon",S.O./P.P. 251,,1062.0,0,No
+"Zakarian, Mr. Ortin",2670,,1063.0,0,No
+"Dyker, Mr. Adolf Fredrik",347072,,1064.0,0,No
+"Torfa, Mr. Assad",2673,,1065.0,0,No
+"Asplund, Mr. Carl Oscar Vilhelm Gustafsson",347077,,1066.0,0,No
+"Brown, Miss. Edith Eileen",29750,,1067.0,1,No
+"Sincock, Miss. Maude",C.A. 33112,,1068.0,1,No
+"Stengel, Mr. Charles Emil Henry",11778,C116,1069.0,0,No
+"Becker, Mrs. Allen Oliver (Nellie E Baumgardner)",230136,F4,1070.0,1,No
+"Compton, Mrs. Alexander Taylor (Mary Eliza Ingersoll)",PC 17756,E45,1071.0,1,No
+"McCrie, Mr. James Matthew",233478,,1072.0,0,No
+"Compton, Mr. Alexander Taylor Jr",PC 17756,E52,1073.0,0,No
+"Marvin, Mrs. Daniel Warner (Mary Graham Carmichael Farquarson)",113773,D30,1074.0,1,No
+"Lane, Mr. Patrick",7935,,1075.0,0,No
+"Douglas, Mrs. Frederick Charles (Mary Helene Baxter)",PC 17558,B58 B60,1076.0,1,No
+"Maybery, Mr. Frank Hubert",239059,,1077.0,0,No
+"Phillips, Miss. Alice Frances Louisa",S.O./P.P. 2,,1078.0,1,No
+"Davies, Mr. Joseph",A/4 48873,,1079.0,0,No
+"Sage, Miss. Ada",CA. 2343,,1080.0,0,No
+"Veal, Mr. James",28221,,1081.0,0,No
+"Angle, Mr. William A",226875,,1082.0,0,No
+"Salomon, Mr. Abraham L",111163,,1083.0,0,No
+"van Billiard, Master. Walter John",A/5. 851,,1084.0,0,No
+"Lingane, Mr. John",235509,,1085.0,0,No
+"Drew, Master. Marshall Brines",28220,,1086.0,0,No
+"Karlsson, Mr. Julius Konrad Eugen",347465,,1087.0,0,No
+"Spedden, Master. Robert Douglas",16966,E34,1088.0,1,No
+"Nilsson, Miss. Berta Olivia",347066,,1089.0,1,No
+"Baimbrigge, Mr. Charles Robert",C.A. 31030,,1090.0,0,No
+"Rasmussen, Mrs. (Lena Jacobsen Solvang)",65305,,1091.0,1,No
+"Murphy, Miss. Nora",36568,,1092.0,1,No
+"Danbom, Master. Gilbert Sigvard Emanuel",347080,,1093.0,0,No
+"Astor, Col. John Jacob",PC 17757,C62 C64,1094.0,0,No
+"Quick, Miss. Winifred Vera",26360,,1095.0,1,No
+"Andrew, Mr. Frank Thomas",C.A. 34050,,1096.0,0,No
+"Omont, Mr. Alfred Fernand",F.C. 12998,,1097.0,1,No
+"McGowan, Miss. Katherine",9232,,1098.0,1,No
+"Collett, Mr. Sidney C Stuart",28034,,1099.0,0,No
+"Rosenbaum, Miss. Edith Louise",PC 17613,A11,1100.0,1,No
+"Delalic, Mr. Redjo",349250,,1101.0,0,No
+"Andersen, Mr. Albert Karvin",C 4001,,1102.0,0,No
+"Finoli, Mr. Luigi",SOTON/O.Q. 3101308,,1103.0,0,No
+"Deacon, Mr. Percy William",S.O.C. 14879,,1104.0,0,No
+"Howard, Mrs. Benjamin (Ellen Truelove Arman)",24065,,1105.0,1,No
+"Andersson, Miss. Ida Augusta Margareta",347091,,1106.0,0,No
+"Head, Mr. Christopher",113038,B11,1107.0,0,No
+"Mahon, Miss. Bridget Delia",330924,,1108.0,1,No
+"Wick, Mr. George Dennick",36928,,1109.0,0,No
+"Widener, Mrs. George Dunton (Eleanor Elkins)",113503,C80,1110.0,1,No
+"Thomson, Mr. Alexander Morrison",32302,,1111.0,0,No
+"Duran y More, Miss. Florentina",SC/PARIS 2148,,1112.0,1,No
+"Reynolds, Mr. Harold J",342684,,1113.0,0,No
+"Cook, Mrs. (Selena Rogers)",W./C. 14266,F33,1114.0,1,No
+"Karlsson, Mr. Einar Gervasius",350053,,1115.0,0,No
+"Candee, Mrs. Edward (Helen Churchill Hungerford)",PC 17606,,1116.0,1,No
+"Moubarek, Mrs. George (Omine Amenia"" Alexander)""""""",2661,,1117.0,1,No
+"Asplund, Mr. Johan Charles",350054,,1118.0,0,No
+"McNeill, Miss. Bridget",370368,,1119.0,1,No
+"Everett, Mr. Thomas James",C.A. 6212,,1120.0,0,No
+"Hocking, Mr. Samuel James Metcalfe",242963,,1121.0,0,No
+"Sweet, Mr. George Frederick",220845,,1122.0,0,No
+"Willard, Miss. Constance",113795,,1123.0,1,No
+"Wiklund, Mr. Karl Johan",3101266,,1124.0,0,No
+"Linehan, Mr. Michael",330971,,1125.0,0,No
+"Cumings, Mr. John Bradley",PC 17599,C85,1126.0,0,No
+"Vendel, Mr. Olof Edvin",350416,,1127.0,0,No
+"Warren, Mr. Frank Manley",110813,D37,1128.0,0,No
+"Baccos, Mr. Raffull",2679,,1129.0,0,No
+"Hiltunen, Miss. Marta",250650,,1130.0,1,No
+"Douglas, Mrs. Walter Donald (Mahala Dutton)",PC 17761,C86,1131.0,1,No
+"Lindstrom, Mrs. Carl Johan (Sigrid Posse)",112377,,1132.0,1,No
+"Christy, Mrs. (Alice Frances)",237789,,1133.0,1,No
+"Spedden, Mr. Frederic Oakley",16966,E34,1134.0,0,No
+"Hyman, Mr. Abraham",3470,,1135.0,0,No
+"Johnston, Master. William Arthur Willie""""""""",W./C. 6607,,1136.0,0,No
+"Kenyon, Mr. Frederick R",17464,D21,1137.0,0,No
+"Karnes, Mrs. J Frank (Claire Bennett)",F.C.C. 13534,,1138.0,1,No
+"Drew, Mr. James Vivian",28220,,1139.0,0,No
+"Hold, Mrs. Stephen (Annie Margaret Hill)",26707,,1140.0,1,No
+"Khalil, Mrs. Betros (Zahie Maria"" Elias)""""""",2660,,1141.0,1,No
+"West, Miss. Barbara J",C.A. 34651,,1142.0,1,No
+"Abrahamsson, Mr. Abraham August Johannes",SOTON/O2 3101284,,1143.0,0,No
+"Clark, Mr. Walter Miller",13508,C89,1144.0,1,No
+"Salander, Mr. Karl Johan",7266,,1145.0,0,No
+"Wenzel, Mr. Linhart",345775,,1146.0,0,No
+"MacKay, Mr. George William",C.A. 42795,,1147.0,0,No
+"Mahon, Mr. John",AQ/4 3130,,1148.0,0,No
+"Niklasson, Mr. Samuel",363611,,1149.0,0,No
+"Bentham, Miss. Lilian W",28404,,1150.0,1,No
+"Midtsjo, Mr. Karl Albert",345501,,1151.0,0,No
+"de Messemaeker, Mr. Guillaume Joseph",345572,,1152.0,0,No
+"Nilsson, Mr. August Ferdinand",350410,,1153.0,0,No
+"Wells, Mrs. Arthur Henry (Addie"" Dart Trevaskis)""""""",29103,,1154.0,1,No
+"Klasen, Miss. Gertrud Emilia",350405,,1155.0,1,No
+"Portaluppi, Mr. Emilio Ilario Giuseppe",C.A. 34644,,1156.0,0,No
+"Lyntakoff, Mr. Stanko",349235,,1157.0,0,No
+"Chisholm, Mr. Roderick Robert Crispin",112051,,1158.0,0,No
+"Warren, Mr. Charles William",C.A. 49867,,1159.0,0,No
+"Howard, Miss. May Elizabeth",A. 2. 39186,,1160.0,1,No
+"Pokrnic, Mr. Mate",315095,,1161.0,0,No
+"McCaffry, Mr. Thomas Francis",13050,C6,1162.0,0,No
+"Fox, Mr. Patrick",368573,,1163.0,0,No
+"Clark, Mrs. Walter Miller (Virginia McDowell)",13508,C89,1164.0,1,No
+"Lennon, Miss. Mary",370371,,1165.0,1,No
+"Saade, Mr. Jean Nassr",2676,,1166.0,0,No
+"Bryhl, Miss. Dagmar Jenny Ingeborg",236853,,1167.0,1,No
+"Parker, Mr. Clifford Richard",SC 14888,,1168.0,0,No
+"Faunthorpe, Mr. Harry",2926,,1169.0,0,No
+"Ware, Mr. John James",CA 31352,,1170.0,0,No
+"Oxenham, Mr. Percy Thomas",W./C. 14260,,1171.0,0,No
+"Oreskovic, Miss. Jelka",315085,,1172.0,1,No
+"Peacock, Master. Alfred Edward",SOTON/O.Q. 3101315,,1173.0,0,No
+"Fleming, Miss. Honora",364859,,1174.0,1,No
+"Touma, Miss. Maria Youssef",2650,,1175.0,1,No
+"Rosblom, Miss. Salli Helena",370129,,1176.0,1,No
+"Dennis, Mr. William",A/5 21175,,1177.0,0,No
+"Franklin, Mr. Charles (Charles Fardon)",SOTON/O.Q. 3101314,,1178.0,0,No
+"Snyder, Mr. John Pillsbury",21228,B45,1179.0,0,No
+"Mardirosian, Mr. Sarkis",2655,F E46,1180.0,0,No
+"Ford, Mr. Arthur",A/5 1478,,1181.0,0,No
+"Rheims, Mr. George Alexander Lucien",PC 17607,,1182.0,0,No
+"Daly, Miss. Margaret Marcella Maggie""""""""",382650,,1183.0,1,No
+"Nasr, Mr. Mustafa",2652,,1184.0,0,No
+"Dodge, Dr. Washington",33638,A34,1185.0,0,No
+"Wittevrongel, Mr. Camille",345771,,1186.0,0,No
+"Angheloff, Mr. Minko",349202,,1187.0,0,No
+"Laroche, Miss. Louise",SC/Paris 2123,,1188.0,1,No
+"Samaan, Mr. Hanna",2662,,1189.0,0,No
+"Loring, Mr. Joseph Holland",113801,,1190.0,0,No
+"Johansson, Mr. Nils",347467,,1191.0,0,No
+"Olsson, Mr. Oscar Wilhelm",347079,,1192.0,0,No
+"Malachard, Mr. Noel",237735,D,1193.0,0,No
+"Phillips, Mr. Escott Robert",S.O./P.P. 2,,1194.0,0,No
+"Pokrnic, Mr. Tome",315092,,1195.0,0,No
+"McCarthy, Miss. Catherine Katie""""""""",383123,,1196.0,1,No
+"Crosby, Mrs. Edward Gifford (Catherine Elizabeth Halstead)",112901,B26,1197.0,1,No
+"Allison, Mr. Hudson Joshua Creighton",113781,C22 C26,1198.0,0,No
+"Aks, Master. Philip Frank",392091,,1199.0,0,No
+"Hays, Mr. Charles Melville",12749,B69,1200.0,0,No
+"Hansen, Mrs. Claus Peter (Jennie L Howard)",350026,,1201.0,0,No
+"Cacic, Mr. Jego Grga",315091,,1202.0,0,No
+"Vartanian, Mr. David",2658,,1203.0,0,No
+"Sadowitz, Mr. Harry",LP 1588,,1204.0,0,No
+"Carr, Miss. Jeannie",368364,,1205.0,1,No
+"White, Mrs. John Stuart (Ella Holmes)",PC 17760,C32,1206.0,1,No
+"Hagardon, Miss. Kate",AQ/3. 30631,,1207.0,1,No
+"Spencer, Mr. William Augustus",PC 17569,B78,1208.0,0,No
+"Rogers, Mr. Reginald Harry",28004,,1209.0,0,No
+"Jonsson, Mr. Nils Hilding",350408,,1210.0,0,No
+"Jefferys, Mr. Ernest Wilfred",C.A. 31029,,1211.0,0,No
+"Andersson, Mr. Johan Samuel",347075,,1212.0,0,No
+"Krekorian, Mr. Neshan",2654,F E57,1213.0,0,No
+"Nesson, Mr. Israel",244368,F2,1214.0,0,No
+"Rowe, Mr. Alfred G",113790,,1215.0,0,No
+"Kreuchen, Miss. Emilie",24160,,1216.0,1,No
+"Assam, Mr. Ali",SOTON/O.Q. 3101309,,1217.0,0,No
+"Becker, Miss. Ruth Elizabeth",230136,F4,1218.0,1,No
+"Rosenshine, Mr. George (Mr George Thorne"")""""""",PC 17585,,1219.0,0,No
+"Clarke, Mr. Charles Valentine",2003,,1220.0,0,No
+"Enander, Mr. Ingvar",236854,,1221.0,0,No
+"Davies, Mrs. John Morgan (Elizabeth Agnes Mary White)",C.A. 33112,,1222.0,1,No
+"Dulles, Mr. William Crothers",PC 17580,A18,1223.0,0,No
+"Thomas, Mr. Tannous",2684,,1224.0,0,No
+"Nakid, Mrs. Said (Waika Mary"" Mowad)""""""",2653,,1225.0,1,No
+"Cor, Mr. Ivan",349229,,1226.0,0,No
+"Maguire, Mr. John Edward",110469,C106,1227.0,0,No
+"de Brito, Mr. Jose Joaquim",244360,,1228.0,0,No
+"Elias, Mr. Joseph",2675,,1229.0,0,No
+"Denbury, Mr. Herbert",C.A. 31029,,1230.0,0,No
+"Betros, Master. Seman",2622,,1231.0,0,No
+"Fillbrook, Mr. Joseph Charles",C.A. 15185,,1232.0,0,No
+"Lundstrom, Mr. Thure Edvin",350403,,1233.0,0,No
+"Sage, Mr. John George",CA. 2343,,1234.0,0,No
+"Cardeza, Mrs. James Warburton Martinez (Charlotte Wardle Drake)",PC 17755,B51 B53 B55,1235.0,1,No
+"van Billiard, Master. James William",A/5. 851,,1236.0,0,No
+"Abelseth, Miss. Karen Marie",348125,,1237.0,1,No
+"Botsford, Mr. William Hull",237670,,1238.0,0,No
+"Whabee, Mrs. George Joseph (Shawneene Abi-Saab)",2688,,1239.0,1,No
+"Giles, Mr. Ralph",248726,,1240.0,0,No
+"Walcroft, Miss. Nellie",F.C.C. 13528,,1241.0,1,No
+"Greenfield, Mrs. Leo David (Blanche Strouse)",PC 17759,D10 D12,1242.0,1,No
+"Stokes, Mr. Philip Joseph",F.C.C. 13540,,1243.0,0,No
+"Dibden, Mr. William",S.O.C. 14879,,1244.0,0,No
+"Herman, Mr. Samuel",220845,,1245.0,0,No
+"Dean, Miss. Elizabeth Gladys Millvina""""""""",C.A. 2315,,1246.0,1,No
+"Julian, Mr. Henry Forbes",113044,E60,1247.0,0,No
+"Brown, Mrs. John Murray (Caroline Lane Lamson)",11769,C101,1248.0,1,No
+"Lockyer, Mr. Edward",1222,,1249.0,0,No
+"O'Keefe, Mr. Patrick",368402,,1250.0,0,No
+"Lindell, Mrs. Edvard Bengtsson (Elin Gerda Persson)",349910,,1251.0,1,No
+"Sage, Master. William Henry",CA. 2343,,1252.0,0,No
+"Mallet, Mrs. Albert (Antoinette Magnin)",S.C./PARIS 2079,,1253.0,1,No
+"Ware, Mrs. John James (Florence Louise Long)",CA 31352,,1254.0,1,No
+"Strilic, Mr. Ivan",315083,,1255.0,0,No
+"Harder, Mrs. George Achilles (Dorothy Annan)",11765,E50,1256.0,1,No
+"Sage, Mrs. John (Annie Bullen)",CA. 2343,,1257.0,0,No
+"Caram, Mr. Joseph",2689,,1258.0,0,No
+"Riihivouri, Miss. Susanna Juhantytar Sanni""""""""",3101295,,1259.0,1,No
+"Gibson, Mrs. Leonard (Pauline C Boeson)",112378,,1260.0,1,No
+"Pallas y Castello, Mr. Emilio",SC/PARIS 2147,,1261.0,0,No
+"Giles, Mr. Edgar",28133,,1262.0,0,No
+"Wilson, Miss. Helen Alice",16966,E39 E41,1263.0,1,No
+"Ismay, Mr. Joseph Bruce",112058,B52 B54 B56,1264.0,0,No
+"Harbeck, Mr. William H",248746,,1265.0,0,No
+"Dodge, Mrs. Washington (Ruth Vidaver)",33638,A34,1266.0,1,No
+"Bowen, Miss. Grace Scott",PC 17608,,1267.0,1,No
+"Kink, Miss. Maria",315152,,1268.0,1,No
+"Cotterill, Mr. Henry Harry""""""""",29107,,1269.0,0,No
+"Hipkins, Mr. William Edward",680,C39,1270.0,0,No
+"Asplund, Master. Carl Edgar",347077,,1271.0,0,No
+"O'Connor, Mr. Patrick",366713,,1272.0,0,No
+"Foley, Mr. Joseph",330910,,1273.0,0,No
+"Risien, Mrs. Samuel (Emma)",364498,,1274.0,1,No
+"McNamee, Mrs. Neal (Eileen O'Leary)",376566,,1275.0,1,No
+"Wheeler, Mr. Edwin Frederick""""""""",SC/PARIS 2159,,1276.0,0,No
+"Herman, Miss. Kate",220845,,1277.0,1,No
+"Aronsson, Mr. Ernst Axel Algot",349911,,1278.0,0,No
+"Ashby, Mr. John",244346,,1279.0,0,No
+"Canavan, Mr. Patrick",364858,,1280.0,0,No
+"Palsson, Master. Paul Folke",349909,,1281.0,0,No
+"Payne, Mr. Vivian Ponsonby",12749,B24,1282.0,1,No
+"Lines, Mrs. Ernest H (Elizabeth Lindsey James)",PC 17592,D28,1283.0,1,No
+"Abbott, Master. Eugene Joseph",C.A. 2673,,1284.0,0,No
+"Gilbert, Mr. William",C.A. 30769,,1285.0,0,No
+"Kink-Heilmann, Mr. Anton",315153,,1286.0,0,No
+"Smith, Mrs. Lucien Philip (Mary Eloise Hughes)",13695,C31,1287.0,1,No
+"Colbert, Mr. Patrick",371109,,1288.0,0,No
+"Frolicher-Stehli, Mrs. Maxmillian (Margaretha Emerentia Stehli)",13567,B41,1289.0,1,No
+"Larsson-Rondberg, Mr. Edvard A",347065,,1290.0,0,No
+"Conlon, Mr. Thomas Henry",21332,,1291.0,0,No
+"Bonnell, Miss. Caroline",36928,C7,1292.0,1,No
+"Gale, Mr. Harry",28664,,1293.0,0,No
+"Gibson, Miss. Dorothy Winifred",112378,,1294.0,1,No
+"Carrau, Mr. Jose Pedro",113059,,1295.0,1,No
+"Frauenthal, Mr. Isaac Gerald",17765,D40,1296.0,0,No
+"Nourney, Mr. Alfred (Baron von Drachstedt"")""""""",SC/PARIS 2166,D38,1297.0,0,No
+"Ware, Mr. William Jeffery",28666,,1298.0,0,No
+"Widener, Mr. George Dunton",113503,C80,1299.0,0,No
+"Riordan, Miss. Johanna Hannah""""""""",334915,,1300.0,1,No
+"Peacock, Miss. Treasteall",SOTON/O.Q. 3101315,,1301.0,1,No
+"Naughton, Miss. Hannah",365237,,1302.0,1,No
+"Minahan, Mrs. William Edward (Lillian E Thorpe)",19928,C78,1303.0,1,No
+"Henriksson, Miss. Jenny Lovisa",347086,,1304.0,1,No
+"Spector, Mr. Woolf",A.5. 3236,,1305.0,0,No
+"Oliva y Ocana, Dona. Fermina",PC 17758,C105,1306.0,1,No
+"Saether, Mr. Simon Sivertsen",SOTON/O.Q. 3101262,,1307.0,0,No
+"Ware, Mr. Frederick",359309,,1308.0,0,No
+"Peter, Master. Michael J",2668,,1309.0,0,No

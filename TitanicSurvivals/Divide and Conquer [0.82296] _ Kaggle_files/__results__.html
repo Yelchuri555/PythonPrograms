@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!-- saved from url=(0285)https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta name="generator" content="pandoc">
+
+
+
+<meta name="date" content="2018-02-15">
+
+<title>Divide and Conquer [0.82296]</title>
+
+<script src="./jquery.min.js.download"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="./cosmo.min.css" rel="stylesheet">
+<script src="./bootstrap.min.js.download"></script>
+<script src="./html5shiv.min.js.download"></script>
+<script src="./respond.min.js.download"></script>
+<script src="./tabsets.js.download"></script>
+<script src="./codefolding.js.download"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+<!--<base target="_blank">--><base href="." target="_blank"><link href="./vendor.css" rel="stylesheet" type="text/css"><link href="./notebookViewer.css" rel="stylesheet" type="text/css"><script type="text/javascript" src="./MathJax.js(1).download"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_ExBox {display: block!important; overflow: hidden; width: 1px; height: 60ex; min-height: 0; max-height: none}
+.MathJax .MathJax_EmBox {display: block!important; overflow: hidden; width: 1px; height: 60em; min-height: 0; max-height: none}
+.MathJax_LineBox {display: table!important}
+.MathJax_LineBox span {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.2') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.2') format('woff'), url('https://mathjax.rstudio.com/latest/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.2') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+
+<body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+
+<style type="text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Divide and Conquer [0.82296]</h1>
+<h4 class="date"><em>2018-02-15</em></h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#introduction-and-preliminaries" target="_self"><span class="toc-section-number">1</span> Introduction and Preliminaries</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#load-libraries" target="_self"><span class="toc-section-number">1.1</span> Load libraries</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#load-data" target="_self"><span class="toc-section-number">1.2</span> Load data</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#combine-data" target="_self"><span class="toc-section-number">1.3</span> Combine data</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#let-us-fix-a-couple-of-errors-in-the-data-set" target="_self"><span class="toc-section-number">1.4</span> Let us fix a couple of errors in the data set</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#transform-survived-to-a-categorical-target-for-binary-classification" target="_self"><span class="toc-section-number">1.5</span> Transform Survived to a categorical target for binary classification</a></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#completing-missing-data" target="_self"><span class="toc-section-number">2</span> Completing missing data</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#completing-fare" target="_self"><span class="toc-section-number">2.1</span> Completing Fare</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#completing-embarked" target="_self"><span class="toc-section-number">2.2</span> Completing Embarked</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#completing-cabin" target="_self"><span class="toc-section-number">2.3</span> Completing Cabin</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#completing-age" target="_self"><span class="toc-section-number">2.4</span> Completing Age</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#how-age-impacts-pclass-1-and-2" target="_self"><span class="toc-section-number">2.4.1</span> How Age impacts Pclass 1 and 2</a></li>
+</ul></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#extract-group-indicators-and-finding-groups" target="_self"><span class="toc-section-number">3</span> Extract group indicators and finding groups</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#compute-frequencies" target="_self"><span class="toc-section-number">3.1</span> Compute frequencies</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#family" target="_self"><span class="toc-section-number">3.2</span> Family</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#fares" target="_self"><span class="toc-section-number">3.3</span> Fares</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#finding-groups" target="_self"><span class="toc-section-number">3.4</span> Finding groups</a></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#engineer-slogl-feature" target="_self"><span class="toc-section-number">4</span> Engineer SLogL feature</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#pclass-and-sex" target="_self"><span class="toc-section-number">4.1</span> Pclass and Sex</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#how-survived-relates-to-ticket-and-fare-frequencies" target="_self"><span class="toc-section-number">4.2</span> How Survived relates to Ticket and Fare frequencies?</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#tfreq-vs-pclass-vs-slogl-graph" target="_self"><span class="toc-section-number">4.3</span> TFreq vs Pclass vs SLogL graph</a></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#adjusting-slogl-according-to-groups" target="_self"><span class="toc-section-number">5</span> Adjusting SLogL according to groups</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#next-we-reward-or-penalize-groups-of-people" target="_self"><span class="toc-section-number">5.1</span> Next we reward or penalize groups of people</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#by-increasing-the-log-likelihood-score-for-groups-larger-than-one-that-have-survivors" target="_self"><span class="toc-section-number">5.1.1</span> By increasing the log likelihood score for groups larger than one that have survivors</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#the-sconst-variable-was-used-to-penalize-singles-prior-to-version-30" target="_self"><span class="toc-section-number">5.1.2</span> The sconst variable was used to penalize singles prior to version 30</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#by-penalizing-large-group-sizes-see-tfreq-vs-pclass-vs-slogl-graph" target="_self"><span class="toc-section-number">5.1.3</span> By penalizing large group sizes (See TFreq vs Pclass vs SLogL graph)</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#by-promoting-high-likelihood-of-survival-for-minors-in-pclass-1-and-pclass-2." target="_self"><span class="toc-section-number">5.1.4</span> By promoting high likelihood of survival for Minors in Pclass 1 and Pclass 2.</a></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#plot-slogl-after-adjustments" target="_self"><span class="toc-section-number">5.2</span> Plot SLogL after adjustments</a></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#conquer" target="_self"><span class="toc-section-number">6</span> Conquer</a><ul>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#cross-validation" target="_self"><span class="toc-section-number">6.1</span> Cross validation</a></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#write-submission-file" target="_self"><span class="toc-section-number">6.2</span> Write submission file</a></li>
+</ul></li>
+<li><a href="https://www.kaggleusercontent.com/kf/2541664/eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..MLyXFrJxRO2Ej6VGaYU6hg.HjT9nkcg3_MWpglzfQfp63Zj57OYJfG_E4DFKksf20dg4WLbmHdQRbCmOmGnd-txM4J6_5o_uHFwVlKBEgmZSWND-l9P-YAy2C-pnQU7Fk-HNjLfvYV-1vSsZg7u0i4q.5emkclTm5FCV2XyaFMi2ow/__results__.html#conclusions" target="_self"><span class="toc-section-number">7</span> Conclusions</a></li>
+</ul>
+</div>
+
+<div id="introduction-and-preliminaries" class="section level1">
+<h1><span class="header-section-number">1</span> Introduction and Preliminaries</h1>
+<p>This <em>RMarkdown</em> might be helpful for those that tried to look at this data set at various angles but are having trouble getting a <strong>public score better than 0.8</strong>. It grew out of studying many approaches and scripts. The kernel is not intended as a “getting started” one as there are many other kernels that achieve that purpose. I’d encourage starting and understanding those first. I wrote it originally as an R script; I thank <a href="https://www.kaggle.com/headsortails" target="_top"><em>Heads or Tails</em></a> for encouraging me to give it a shot converting it to RMarkdown.</p>
+<p>Many kernels report cross validation is typically higher than the public score with this data set. The imbalance might be caused of legitimate statistical differences between the train and test because they are rather small. My belief, however, is that the discrepancy is germane to a componding set of proceedures that overfits many kernels. This kernel will produce a model that predicts with a <strong>cross validation accuracy of 0.826</strong> and the actual <strong>public score is 0.82296</strong>.</p>
+<p>Beginners may benefit as well as this kernel demonstrates a method on how to fill missing values and apply <strong>cross validation</strong> to predict scores. It also tries to answer why a score of 100% is almost provably impossible by looking at a narrow class of female passangers with very similar profile in the <strong>Fare</strong> section of this kernel.</p>
+<p>The Titanic data set is fun with many features for a playground set but I came to realize that using all the features is more an invitation for over fitting than helpful for building a good model. Therefore this kernel is about keeping only relevant features and discarding as much as possible to avoid over-fitting. Cabin and Age features have many missing values so we decided to mostly purge them rather than attempting to fill missing values for a better than 80% accuracy.</p>
+<p>One of the most important charts appears to be Sex vs Pclass vs Survival so we first focus on it.</p>
+<p>This script breaks the problem in sub-stages (<strong>divide</strong>) where a <em>score</em> feature so called <strong>log likelihood ratio</strong> is slowly extracted out of the raw features. In the end, we make the final model and prediction (<strong>conquer</strong>) using just the log likelihood as an aggregated feature. One may argue this is a form of a <strong>meta-algorithm</strong>, along the lines of <strong>boosting</strong>. <a href="https://stats.stackexchange.com/questions/18891/bagging-boosting-and-stacking-in-machine-learning">This link has more information on <strong>meta-algorithms</strong></a></p>
+<p>It is still a work in progress. There appears to be places for improvement and we are working on them.</p>
+<p><strong>Acknowledgments</strong></p>
+<p>The following kernels heavily influenced techniques, ideas, and presentation of this kernel.</p>
+<p><a href="https://www.kaggle.com/c/titanic/discussion/6821" target="_top">Titanic: Getting Started With R - Full Guide to 0.81340</a> by <a href="https://www.kaggle.com/trevorstephens" target="_top">Trevor Stephens</a>.</p>
+<p><a href="https://www.kaggle.com/mrisdal/exploring-survival-on-the-titanic" target="_top">Exploring Survival on the Titanic</a> by <a href="https://www.kaggle.com/mrisdal" target="_top">Megan Risdal</a>.</p>
+<p><a href="https://www.kaggle.com/headsortails/tidy-titarnic" target="_top">Tidy TitaRnic</a> by <a href="https://www.kaggle.com/headsortails" target="_top">Heads or Tails</a>.</p>
+<p>Many others.</p>
+<div id="load-libraries" class="section level2">
+<h2><span class="header-section-number">1.1</span> Load libraries</h2>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F361" aria-expanded="false" aria-controls="rcode-643E0F361"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F361"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(plyr);      <span class="co"># load plyr prior to dplyr to avoid warnings</span>
+<span class="kw">library</span>(caret);     <span class="co"># A nice machine learning wrapper library </span>
+<span class="kw">library</span>(dplyr);     <span class="co"># data manipulation</span>
+<span class="kw">library</span>(gridExtra); <span class="co"># multiple plots in one page</span>
+<span class="kw">library</span>(rpart.plot);<span class="co"># nice plots for rpart trees </span></code></pre></div></div>
+</div>
+<div id="load-data" class="section level2">
+<h2><span class="header-section-number">1.2</span> Load data</h2>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F362" aria-expanded="false" aria-controls="rcode-643E0F362"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F362"><pre class="sourceCode r"><code class="sourceCode r">inpath  &lt;-<span class="st"> "../data/"</span>;
+outpath &lt;-<span class="st"> "../data/"</span>;
+kaggle &lt;-<span class="st"> </span>F;
+<span class="cf">if</span>(<span class="op">!</span><span class="kw">dir.exists</span>(inpath)) {
+        kaggle  &lt;-<span class="st"> </span>T;
+    inpath  &lt;-<span class="st"> "../input/"</span>; <span class="co"># changing path to Kaggle's environment</span>
+    outpath &lt;-<span class="st"> ""</span>;
+}
+train &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste0</span>(inpath,<span class="st">"train.csv"</span>));
+test  &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="kw">paste0</span>(inpath,<span class="st">"test.csv"</span>));</code></pre></div></div>
+</div>
+<div id="combine-data" class="section level2">
+<h2><span class="header-section-number">1.3</span> Combine data</h2>
+<p>We combine the test and train sets for joint pre-processing of features. It is mainly used to the imputation of missing data. Combining train and test sets for this step ensures better statistics is obtained for the features before predicting missing ones. We also add an indicator flag for the two sets.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F363" aria-expanded="false" aria-controls="rcode-643E0F363"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F363"><pre class="sourceCode r"><code class="sourceCode r">test<span class="op">$</span>Survived &lt;-<span class="st"> </span><span class="ot">NA</span>;
+test<span class="op">$</span>Set  &lt;-<span class="st"> "Test"</span>;
+train<span class="op">$</span>Set &lt;-<span class="st"> "Train"</span>;
+comb &lt;-<span class="st"> </span><span class="kw">rbind</span>(train, test);
+test_index &lt;-<span class="st"> </span>comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Test"</span>) <span class="op">%&gt;%</span><span class="st"> </span>.<span class="op">$</span>PassengerId <span class="co"># test PassengerId </span></code></pre></div></div>
+</div>
+<div id="let-us-fix-a-couple-of-errors-in-the-data-set" class="section level2">
+<h2><span class="header-section-number">1.4</span> Let us fix a couple of errors in the data set</h2>
+<p>Thousands of kagglers worked on this data set. Some folks really digged into the details. The following fixes SibSp/Parch values for two passengers (Id=280 and Id=1284) according to <a href="https://www.kaggle.com/c/titanic/discussion/39787" target="_top"><strong>this kernel</strong></a> because a 16 year old can’t have a 13 year old son! He goes further and confirm it with historical data.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F364" aria-expanded="false" aria-controls="rcode-643E0F364"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F364"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>SibSp[comb<span class="op">$</span>PassengerId<span class="op">==</span><span class="dv">280</span>] =<span class="st"> </span><span class="dv">0</span>
+comb<span class="op">$</span>Parch[comb<span class="op">$</span>PassengerId<span class="op">==</span><span class="dv">280</span>] =<span class="st"> </span><span class="dv">2</span>
+comb<span class="op">$</span>SibSp[comb<span class="op">$</span>PassengerId<span class="op">==</span><span class="dv">1284</span>] =<span class="st"> </span><span class="dv">1</span>
+comb<span class="op">$</span>Parch[comb<span class="op">$</span>PassengerId<span class="op">==</span><span class="dv">1284</span>] =<span class="st"> </span><span class="dv">1</span></code></pre></div></div>
+</div>
+<div id="transform-survived-to-a-categorical-target-for-binary-classification" class="section level2">
+<h2><span class="header-section-number">1.5</span> Transform Survived to a categorical target for binary classification</h2>
+<p>Survived will be treated as a categorical target.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F365" aria-expanded="false" aria-controls="rcode-643E0F365"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F365"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>Survived &lt;-<span class="st"> </span><span class="kw">factor</span>(comb<span class="op">$</span>Survived);</code></pre></div></div>
+</div>
+</div>
+<div id="completing-missing-data" class="section level1">
+<h1><span class="header-section-number">2</span> Completing missing data</h1>
+<p>The first step will be completing missing data. There are four features with missing data.</p>
+<ol style="list-style-type: decimal">
+<li>Fare values: 1 passengers.</li>
+<li>Embarked values: 2 passengers.</li>
+<li>Cabin values: 77% missing.</li>
+<li>Age values: 20% missing.</li>
+</ol>
+<div id="completing-fare" class="section level2">
+<h2><span class="header-section-number">2.1</span> Completing Fare</h2>
+<p>There are different ways and tools of completing missing data. We will use <em>rpart</em> because it is simple and it tolerates other missing features during training.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F366" aria-expanded="false" aria-controls="rcode-643E0F366"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F366"><pre class="sourceCode r"><code class="sourceCode r">trControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">"repeatedcv"</span>, <span class="dt">number=</span><span class="dv">7</span>, <span class="dt">repeats=</span><span class="dv">5</span>); 
+faremiss &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">is.na</span>(comb<span class="op">$</span>Fare)); <span class="co"># missing fares (only PassengerId = 1044 is missing)</span>
+model_f   &lt;-<span class="st"> </span><span class="kw">train</span>( Fare <span class="op">~</span><span class="st"> </span>Pclass <span class="op">+</span><span class="st"> </span>Sex <span class="op">+</span><span class="st"> </span>Embarked <span class="op">+</span><span class="st"> </span>SibSp <span class="op">+</span><span class="st"> </span>Parch,
+                  <span class="dt">data =</span> comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(<span class="op">!</span><span class="kw">is.na</span>(Fare)),
+                   <span class="dt">trControl =</span> trControl, <span class="dt">method=</span><span class="st">"rpart"</span>, <span class="dt">na.action =</span> na.pass, <span class="dt">tuneLength =</span> <span class="dv">5</span>);
+comb<span class="op">$</span>Fare[faremiss] =<span class="st"> </span><span class="kw">predict</span>(model_f, comb[faremiss,]); 
+comb<span class="op">$</span>FareFac &lt;-<span class="st"> </span><span class="kw">factor</span>(comb<span class="op">$</span>Fare); </code></pre></div></div>
+<p>rpart trees can be plotted nicely with the rpart.plot package</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F367" aria-expanded="false" aria-controls="rcode-643E0F367"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F367"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rpart.plot</span>(model_f<span class="op">$</span>finalModel)</code></pre></div></div>
+<p><img src="./unnamed-chunk-6-1.png" width="672"></p>
+<p>Smallish trees like this help interpretation of features. We can see that naturally passengers in <strong>Pclass</strong> 1 have paid more <strong>Fare</strong>. It is known that the <strong>Fare</strong> values are the aggregate for all members in a group such as a family. This is the reason for higher <strong>Fare</strong> values when <strong>Parch</strong> and <strong>SibSp</strong> are larger. We can also see more obscure information such as males in Pclass 1 without spouses and children paid less <strong>Fare</strong> than females. However, notice also the female <strong>Fare</strong> value (97) is about twice the value for males (53). It is probably an indication many females without spouses or children in <strong>Pclass</strong> 1 were not traveling alone.</p>
+<p>Let’s now check how reliable the estimates are.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F368" aria-expanded="false" aria-controls="rcode-643E0F368"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F368"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(model_f<span class="op">$</span>results)</code></pre></div></div>
+<pre><code>##           cp     RMSE  Rsquared      MAE   RMSESD RsquaredSD    MAESD
+## 1 0.01133431 37.07382 0.4871965 17.71090 8.334698 0.09259720 1.533281
+## 2 0.03173633 38.63881 0.4431675 19.16694 8.507190 0.07962968 1.950470
+## 3 0.03471075 38.73258 0.4400831 19.26496 8.479470 0.07722347 1.906047
+## 4 0.07498220 40.18583 0.3965730 20.03655 8.433033 0.06454301 2.022942
+## 5 0.36003718 47.03216 0.3209752 26.19679 6.463637 0.03360548 4.095369</code></pre>
+<p>The RMSE is large so it will only serve as a ball park. However, we will not worry much about it because only one passenger had a missing fare value.</p>
+</div>
+<div id="completing-embarked" class="section level2">
+<h2><span class="header-section-number">2.2</span> Completing Embarked</h2>
+<p>Embarked is a feature that is not used in the remaining of the kernel. It is one of those features we decided to drop to prevent over fitting. I’d comment that this might look odd because I know that having <a href="https://www.kaggle.com/pliptor/what-s-the-expected-maximum-score" target="_top">Sex + Pclass + Embarked is better than Sex + Pclass</a>. It is a good topic for investigation. I guess it interacts badly with <em>groups</em>.</p>
+</div>
+<div id="completing-cabin" class="section level2">
+<h2><span class="header-section-number">2.3</span> Completing Cabin</h2>
+<p>There are too many missing values for this feature. We will not attempt to complete missing values in order to prevent adding noise. However, we will use later on the available values to help detect small groups.</p>
+</div>
+<div id="completing-age" class="section level2">
+<h2><span class="header-section-number">2.4</span> Completing Age</h2>
+<p>About 20% of the values are missing. The next plot shows that the Age feature has missing values primarily in Pclass 3.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F369" aria-expanded="false" aria-controls="rcode-643E0F369"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F369"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comb, <span class="kw">aes</span>(Pclass,<span class="dt">fill=</span><span class="op">!</span><span class="kw">is.na</span>(Age))) <span class="op">+</span><span class="st"> </span><span class="kw">geom_bar</span>(<span class="dt">position=</span><span class="st">"dodge"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"Passenger Has Age"</span>,<span class="dt">fill=</span><span class="st">"Has Age"</span>)</code></pre></div></div>
+<p><img src="./unnamed-chunk-8-1.png" width="672"></p>
+<p>We decide at this point to dismiss Age information for Pclass 3. Having to complete a large percentage of missing values may add more noise to the prediction system for a goal of better than 80% accuracy.</p>
+<div id="how-age-impacts-pclass-1-and-2" class="section level3">
+<h3><span class="header-section-number">2.4.1</span> How Age impacts Pclass 1 and 2</h3>
+<p>From the previous observations, we plot the density for survival per age for the remaining Pclass 1 and 2.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3610" aria-expanded="false" aria-controls="rcode-643E0F3610"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3610"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>, Pclass<span class="op">!=</span><span class="dv">3</span>), <span class="kw">aes</span>(Age)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha=</span><span class="fl">0.5</span>, <span class="kw">aes</span>(<span class="dt">fill=</span><span class="kw">factor</span>(Survived))) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"Survival density per Age for Pclass 1 and 2"</span>);</code></pre></div></div>
+<p><img src="./unnamed-chunk-9-1.png" width="672"></p>
+<p>The previous graph supports the case that children under around 14 for Pclass 1 and 2 have high likelihood of survival and other age bands are likely to have little impact for predictions. We create the feature <span class="math inline"><span class="MathJax_Preview" style="color: inherit; display: none;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" style="position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;M&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mi&gt;o&lt;/mi&gt;&lt;mi&gt;r&lt;/mi&gt;&lt;/math&gt;" role="presentation"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 3.574em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.93em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.174em 1002.93em 2.228em -999.997em); top: -2.046em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">M<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.061em;"></span></span><span class="mi" id="MathJax-Span-4" style="font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic;">n</span><span class="mi" id="MathJax-Span-6" style="font-family: MathJax_Math-italic;">o</span><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Math-italic;">r</span></span><span style="display: inline-block; width: 0px; height: 2.052em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.068em; border-left: 0px solid; width: 0px; height: 1.004em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>M</mi><mi>i</mi><mi>n</mi><mi>o</mi><mi>r</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">Minor</script></span> that indicates children below 14 in Pclass 1 and Pclass 2.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3611" aria-expanded="false" aria-controls="rcode-643E0F3611"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3611"><pre class="sourceCode r"><code class="sourceCode r">child &lt;-<span class="st"> </span><span class="dv">14</span>;
+comb<span class="op">$</span>Minor &lt;-<span class="st"> </span><span class="kw">ifelse</span>(comb<span class="op">$</span>Age<span class="op">&lt;</span>child<span class="op">&amp;</span>comb<span class="op">$</span>Pclass<span class="op">!=</span><span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>);
+comb<span class="op">$</span>Minor &lt;-<span class="st"> </span><span class="kw">ifelse</span>(<span class="kw">is.na</span>(comb<span class="op">$</span>Minor), <span class="dv">0</span>, comb<span class="op">$</span>Minor);</code></pre></div></div>
+</div>
+</div>
+</div>
+<div id="extract-group-indicators-and-finding-groups" class="section level1">
+<h1><span class="header-section-number">3</span> Extract group indicators and finding groups</h1>
+<p>There is little doubt that knowing how people formed groups (such as a family) or belonged to certain groups (such as children) is key in this data set. Several good kernels demonstrate that. We attempt to identify various types of groups in addition to the typical <em>family</em> and <em>title</em> as in typical kernels. One of the main differences in this kernel is that we don’t engineer at <em>title</em> feature from the <em>name</em> feature as it is done in most kernels. We believe it is either not very useful or a potential source for over fitting.</p>
+<div id="compute-frequencies" class="section level2">
+<h2><span class="header-section-number">3.1</span> Compute frequencies</h2>
+<p>First we will compute the size of groups for Ticket and FareFac. Here’s a fancy way of how we may compute frequencies of features by group in R. These will be used to determine group sizes.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3612" aria-expanded="false" aria-controls="rcode-643E0F3612"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3612"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>TFreq &lt;-<span class="st"> </span><span class="kw">ave</span>(<span class="kw">seq</span>(<span class="kw">nrow</span>(comb)), comb<span class="op">$</span>Ticket,  <span class="dt">FUN=</span>length);
+comb<span class="op">$</span>FFreq &lt;-<span class="st"> </span><span class="kw">ave</span>(<span class="kw">seq</span>(<span class="kw">nrow</span>(comb)), comb<span class="op">$</span>FareFac, <span class="dt">FUN=</span>length);
+comb<span class="op">$</span>CFreq &lt;-<span class="st"> </span><span class="kw">ave</span>(<span class="kw">seq</span>(<span class="kw">nrow</span>(comb)), comb<span class="op">$</span>Cabin,   <span class="dt">FUN=</span>length);</code></pre></div></div>
+</div>
+<div id="family" class="section level2">
+<h2><span class="header-section-number">3.2</span> Family</h2>
+<p>Here a Surname feature is engineered from the Name feature. It will be used later as one of the group indicators.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3613" aria-expanded="false" aria-controls="rcode-643E0F3613"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3613"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>Surname &lt;-<span class="st"> </span><span class="kw">sapply</span>(<span class="kw">as.character</span>(comb<span class="op">$</span>Name), <span class="dt">FUN=</span><span class="cf">function</span>(x) {<span class="kw">strsplit</span>(x, <span class="dt">split=</span><span class="st">'[,.]'</span>)[[<span class="dv">1</span>]][<span class="dv">1</span>]});</code></pre></div></div>
+</div>
+<div id="fares" class="section level2">
+<h2><span class="header-section-number">3.3</span> Fares</h2>
+<p>An interesting characteristic of the fare prices in this data set is that they are very granular. They are so finely granulated some obscure potential groups would be left unnoticed without using it. For example, only two passengers paid the exact amount of 6.75 for their fare, embarked at the same port, had ticked numbers very close, etc. Perhaps identifying these tiny groups gives us an edge for an extra point or two.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3614" aria-expanded="false" aria-controls="rcode-643E0F3614"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3614"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">print</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Fare<span class="op">==</span><span class="st">"6.75"</span>)) <span class="co"># A young couple?</span></code></pre></div></div>
+<pre><code>##   PassengerId Survived Pclass                         Name    Sex Age
+## 1         144        0      3          Burke, Mr. Jeremiah   male  19
+## 2         655        0      3 Hegarty, Miss. Hanora "Nora" female  18
+##   SibSp Parch Ticket Fare Cabin Embarked   Set FareFac Minor TFreq FFreq
+## 1     0     0 365222 6.75              Q Train    6.75     0     1     2
+## 2     0     0 365226 6.75              Q Train    6.75     0     1     2
+##   CFreq Surname
+## 1  1014   Burke
+## 2  1014 Hegarty</code></pre>
+<p>Is this a young couple? Note that if it is, it would had been undetected by typical proceedures to identify “families”. This example is also a remarkable demonstration of why achiving a score of 100% is very unlikely. We have a young female in Pclass=3 with no relatives that didn’t make it to the survived list. Let’s list others with a similar profile:</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3615" aria-expanded="false" aria-controls="rcode-643E0F3615"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3615"><pre class="sourceCode r"><code class="sourceCode r">comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Sex<span class="op">==</span><span class="st">"female"</span>,Pclass<span class="op">==</span><span class="dv">3</span>,SibSp<span class="op">==</span><span class="dv">0</span>,Parch<span class="op">==</span><span class="dv">0</span>,Age<span class="op">&gt;</span><span class="dv">15</span>, Age<span class="op">&lt;</span><span class="dv">20</span>)</code></pre></div></div>
+<pre><code>##    PassengerId Survived Pclass                                      Name
+## 1           45        1      3             Devaney, Miss. Margaret Delia
+## 2          115        0      3                     Attalah, Miss. Malake
+## 3          157        1      3          Gilnagh, Miss. Katherine "Katie"
+## 4          209        1      3                 Carr, Miss. Helen "Ellen"
+## 5          655        0      3              Hegarty, Miss. Hanora "Nora"
+## 6          678        1      3                   Turja, Miss. Anna Sofia
+## 7          787        1      3                 Sjoblom, Miss. Anna Sofia
+## 8          808        0      3           Pettersson, Miss. Ellen Natalia
+## 9          900     &lt;NA&gt;      3 Abrahim, Mrs. Joseph (Sophie Halaut Easu)
+## 10         958     &lt;NA&gt;      3                   Burns, Miss. Mary Delia
+## 11         979     &lt;NA&gt;      3                Badman, Miss. Emily Louisa
+## 12        1005     &lt;NA&gt;      3                  Buckley, Miss. Katherine
+## 13        1089     &lt;NA&gt;      3               Nilsson, Miss. Berta Olivia
+## 14        1207     &lt;NA&gt;      3                      Hagardon, Miss. Kate
+## 15        1237     &lt;NA&gt;      3               Abelseth, Miss. Karen Marie
+##       Sex  Age SibSp Parch      Ticket    Fare Cabin Embarked   Set
+## 1  female 19.0     0     0      330958  7.8792              Q Train
+## 2  female 17.0     0     0        2627 14.4583              C Train
+## 3  female 16.0     0     0       35851  7.7333              Q Train
+## 4  female 16.0     0     0      367231  7.7500              Q Train
+## 5  female 18.0     0     0      365226  6.7500              Q Train
+## 6  female 18.0     0     0        4138  9.8417              S Train
+## 7  female 18.0     0     0     3101265  7.4958              S Train
+## 8  female 18.0     0     0      347087  7.7750              S Train
+## 9  female 18.0     0     0        2657  7.2292              C  Test
+## 10 female 18.0     0     0      330963  7.8792              Q  Test
+## 11 female 18.0     0     0   A/4 31416  8.0500              S  Test
+## 12 female 18.5     0     0      329944  7.2833              Q  Test
+## 13 female 18.0     0     0      347066  7.7750              S  Test
+## 14 female 17.0     0     0 AQ/3. 30631  7.7333              Q  Test
+## 15 female 16.0     0     0      348125  7.6500              S  Test
+##    FareFac Minor TFreq FFreq CFreq    Surname
+## 1   7.8792     0     1    10  1014    Devaney
+## 2  14.4583     0     2     4  1014    Attalah
+## 3   7.7333     0     1     7  1014    Gilnagh
+## 4     7.75     0     1    55  1014       Carr
+## 5     6.75     0     1     2  1014    Hegarty
+## 6   9.8417     0     1     1  1014      Turja
+## 7   7.4958     0     1     3  1014    Sjoblom
+## 8    7.775     0     1    26  1014 Pettersson
+## 9   7.2292     0     1    24  1014    Abrahim
+## 10  7.8792     0     1    10  1014      Burns
+## 11    8.05     0     1    60  1014     Badman
+## 12  7.2833     0     1     1  1014    Buckley
+## 13   7.775     0     1    26  1014    Nilsson
+## 14  7.7333     0     1     7  1014   Hagardon
+## 15    7.65     0     1     6  1014   Abelseth</code></pre>
+<p>It becomes clear that they all have a similar profile, with no family ties, and survival rate is around 63%. We have seven of them to make a prediction in the test set and unless someone comes up with a better idea, the optimum bet is to bet all of those with a similar profile survived. However, most likely around 37% of them perished and a prediction error is probably inevitable making a score of 100% an improbable achievement using only statistics and machine learning. Conversely, if you do see a kernel that does extremely well, you may want to understand how they may be handling those “tough” types of profiles.</p>
+</div>
+<div id="finding-groups" class="section level2">
+<h2><span class="header-section-number">3.4</span> Finding groups</h2>
+<p>We run a loop over the passengers to assign them groups and a group ID (GID).</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3616" aria-expanded="false" aria-controls="rcode-643E0F3616"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3616"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>GID &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="ot">NA</span>, <span class="kw">nrow</span>(comb));
+maxgroup &lt;-<span class="st"> </span><span class="dv">12</span>; <span class="co"># maximum size of a group</span>
+<span class="cf">for</span> ( i <span class="cf">in</span> comb<span class="op">$</span>PassengerId) {
+    <span class="cf">if</span>(comb<span class="op">$</span>SibSp[i] <span class="op">+</span><span class="st"> </span>comb<span class="op">$</span>Parch[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) { <span class="co"># Check first if ID has relatives </span>
+        comb<span class="op">$</span>GID[i] &lt;-<span class="st"> </span><span class="kw">paste0</span>(comb<span class="op">$</span>Surname[i], comb<span class="op">$</span>SibSp[i] <span class="op">+</span><span class="st"> </span>comb<span class="op">$</span>Parch[i]); <span class="co"># SibSp and Parch are used to potentially differentiate different families with the same Surname.    </span>
+    } <span class="cf">else</span> {
+        <span class="cf">if</span>(comb<span class="op">$</span>TFreq[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(comb<span class="op">$</span>GID[i])) { <span class="co"># Next if shares ticket number with others </span>
+            comb<span class="op">$</span>GID[i] &lt;-<span class="st"> </span><span class="kw">as.character</span>(comb<span class="op">$</span>Ticket[i]);
+        } <span class="cf">else</span> {
+            <span class="cf">if</span>(comb<span class="op">$</span>CFreq[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>comb<span class="op">$</span>CFreq[i]<span class="op">&lt;</span>maxgroup <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(comb<span class="op">$</span>GID[i])) { <span class="co"># Next if shares cabin with others</span>
+                    comb<span class="op">$</span>GID[i] &lt;-<span class="st"> </span><span class="kw">as.character</span>(comb<span class="op">$</span>Cabin[i]);
+            }
+            <span class="cf">else</span> {
+                <span class="cf">if</span>(comb<span class="op">$</span>FFreq[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>comb<span class="op">$</span>FFreq[i]<span class="op">&lt;</span>maxgroup <span class="op">&amp;</span><span class="st"> </span><span class="kw">is.na</span>(comb<span class="op">$</span>GID[i])) { <span class="co"># Next if shares Fare value with others</span>
+                    comb<span class="op">$</span>GID[i] &lt;-<span class="st"> </span><span class="kw">as.character</span>(comb<span class="op">$</span>FareFac[i]);
+                } <span class="cf">else</span> { 
+                    comb<span class="op">$</span>GID[i] &lt;-<span class="st"> "Single"</span>; <span class="co"># Individual doesn't belong to any group</span>
+                }
+            }
+        }   
+    }
+}
+comb<span class="op">$</span>GID &lt;-<span class="st"> </span><span class="kw">factor</span>(comb<span class="op">$</span>GID);</code></pre></div></div>
+</div>
+</div>
+<div id="engineer-slogl-feature" class="section level1">
+<h1><span class="header-section-number">4</span> Engineer SLogL feature</h1>
+<p>Secret sauce #2: Engineer a log likelihood ratio survival feature (SLogL). The idea is to consolidate all features into a single number indicative of Survival. Log likelihood ratio is a transformation from a binary random variable such as Survival to a point in the real line. SLogL gets bigger when survival is likely and gets smaller (negative) when survival is less likely. SLogL is zero when survival is fifty-fifty. The toss of a fair coin has a log likelihood ratio of zero.</p>
+<p>Say you have this binary random variable (Survived) and there are multiple “features” that affect it. There is an underlying assumption that the features must be independent (one reason why I make an effort not to bring too many features unless needed because I know that it would violate the theory otherwise. Some of them are highly correlated. Sex and (Mr, Mrs) for those that process <strong>Title</strong> are examples. Otherwise you’ll start double counting (overfitting) unless you take other preventive measures.</p>
+<p>Say then you have three independent features A, B, and C that influence Survived. Feature A says that probability of survival is PA (and by exclusion death is 1-PA). Then the log likelihood contribution to SLogL by A is computed by SLogA = log(PA/(1-PA)). From the assumption of feature independence and the definition of log likelihood, SLogL becomes SLogA + SLogB + SlogC. In other words, we add the log likelihood ratio contributions of each of the independent features. In a real world, the features may be correlated. In this dataset, if A is Sex and B is Title you’ll have twice the proper contribution to SLogL with respect to Sex.</p>
+<p>More information about log likelihood ratio can be found <a href="http://onlinelibrary.wiley.com/doi/10.1002/0471739219.app1/pdf">here</a>.</p>
+<p>It is related to <a href="https://en.wikipedia.org/wiki/Logistic_regression">logistic regression</a></p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3617" aria-expanded="false" aria-controls="rcode-643E0F3617"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3617"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>SLogL &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>,<span class="kw">nrow</span>(comb));
+<span class="co"># define function to compute log likelihood of a/(1-a)</span>
+logl &lt;-<span class="st"> </span><span class="cf">function</span>(a) {
+    a &lt;-<span class="st"> </span><span class="kw">max</span>(a,<span class="fl">0.1</span>); <span class="co"># avoids log(0)</span>
+    a &lt;-<span class="st"> </span><span class="kw">min</span>(a,<span class="fl">0.9</span>); <span class="co"># avoids division by 0</span>
+    <span class="kw">return</span> (<span class="kw">log</span>(a<span class="op">/</span>(<span class="dv">1</span><span class="op">-</span>a)));
+}</code></pre></div></div>
+<div id="pclass-and-sex" class="section level2">
+<h2><span class="header-section-number">4.1</span> Pclass and Sex</h2>
+<p>The next relatively simple plot let us draw many interesting conclusions.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3618" aria-expanded="false" aria-controls="rcode-643E0F3618"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3618"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">list</span>();
+item &lt;-<span class="st"> </span><span class="dv">1</span>;
+ylim &lt;-<span class="st"> </span><span class="dv">300</span>;
+<span class="cf">for</span>(class <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)){
+    <span class="cf">for</span>(sex <span class="cf">in</span> <span class="kw">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)) {
+        p[[item]] &lt;-<span class="st"> </span><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>, Pclass<span class="op">==</span>class, Sex<span class="op">==</span>sex), <span class="kw">aes</span>(<span class="dt">x=</span>Survived)) <span class="op">+</span><span class="st"> </span>
+<span class="st">          </span><span class="kw">geom_bar</span>(<span class="kw">aes</span>(<span class="dt">fill=</span>Survived)) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_continuous</span>(<span class="dt">limits=</span><span class="kw">c</span>(<span class="dv">0</span>,ylim)) <span class="op">+</span><span class="st"> </span>
+<span class="st">          </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">"none"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="kw">paste</span>(<span class="st">'Pclass='</span>, <span class="kw">as.character</span>(class), sex));
+        item &lt;-<span class="st"> </span>item <span class="op">+</span><span class="st"> </span><span class="dv">1</span>;
+    }
+}
+<span class="kw">do.call</span>(grid.arrange, p)</code></pre></div></div>
+<p><img src="./unnamed-chunk-17-1.png" width="672"></p>
+<ol style="list-style-type: decimal">
+<li>The fate of passengers in Pclass 2 is almost certain: females almost all survive, males almost all perish.</li>
+<li>Pclass 1 males are not as lucky as in Pclass 2 but females almost all survive.</li>
+<li>The luck for females in Pclass 3 is mostly a flip of a coin, close to 50%. <strong>I believe this is the one of the strongest indicators for the limits of achivable score in this dataset.</strong></li>
+<li>Males in Pclass 1 has survival rate that is higher than others. <strong>I believe this brings difficulties similarly as in the case above because the probability of survival gets closer to 50%</strong></li>
+</ol>
+<p>From items 3 and 4, I believe that concentrating efforts on them might produce some extra points. This kernel doesn’t make directly effort towards that but it is an idea to have in mind.</p>
+<p>Now we compute the log likelihood ratio of survival for each of the 6 areas in the grid.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3619" aria-expanded="false" aria-controls="rcode-643E0F3619"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3619"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> (sex <span class="cf">in</span> <span class="kw">c</span>(<span class="st">"male"</span>, <span class="st">"female"</span>)) {
+    <span class="cf">for</span> (class <span class="cf">in</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)) {
+        comb<span class="op">$</span>SLogL[comb<span class="op">$</span>Sex<span class="op">==</span>sex<span class="op">&amp;</span><span class="st"> </span>comb<span class="op">$</span>Pclass<span class="op">==</span>class] &lt;-<span class="st"> </span>
+<span class="st">            </span><span class="kw">logl</span>(<span class="kw">nrow</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Survived<span class="op">==</span><span class="dv">1</span>, Sex<span class="op">==</span>sex, Pclass<span class="op">==</span>class))<span class="op">/</span><span class="kw">nrow</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>, Sex<span class="op">==</span>sex, Pclass<span class="op">==</span>class)));
+    }
+}</code></pre></div></div>
+</div>
+<div id="how-survived-relates-to-ticket-and-fare-frequencies" class="section level2">
+<h2><span class="header-section-number">4.2</span> How Survived relates to Ticket and Fare frequencies?</h2>
+<p>The following plot confirms there is information about survival by looking at the frequency of duplicate tickets and fares</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3620" aria-expanded="false" aria-controls="rcode-643E0F3620"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3620"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>), <span class="kw">aes</span>(<span class="dt">x=</span>FFreq, <span class="dt">y=</span>TFreq, <span class="dt">color=</span><span class="kw">factor</span>(Survived))) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"Ticket Frequency and Fare Frequency Density"</span>);</code></pre></div></div>
+<p><img src="./unnamed-chunk-19-1.png" width="672"></p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3621" aria-expanded="false" aria-controls="rcode-643E0F3621"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3621"><pre class="sourceCode r"><code class="sourceCode r">pf &lt;-<span class="st"> </span><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>,Sex<span class="op">==</span><span class="st">'female'</span>), <span class="kw">aes</span>(<span class="dt">x=</span>FFreq, <span class="dt">y=</span>TFreq, <span class="dt">color=</span>Survived)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"TFreq and FFreq Density (female)"</span>);
+pm &lt;-<span class="st"> </span><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>,Sex<span class="op">==</span><span class="st">"male"</span>), <span class="kw">aes</span>(<span class="dt">x=</span>FFreq, <span class="dt">y=</span>TFreq, <span class="dt">color=</span>Survived)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"TFreq and FFreq Density (male)"</span>);
+<span class="kw">grid.arrange</span>(pf, pm, <span class="dt">ncol=</span><span class="dv">2</span>);</code></pre></div></div>
+<p><img src="./unnamed-chunk-20-1.png" width="672"></p>
+</div>
+<div id="tfreq-vs-pclass-vs-slogl-graph" class="section level2">
+<h2><span class="header-section-number">4.3</span> TFreq vs Pclass vs SLogL graph</h2>
+<p>Observe in this chart the SLogL has a few concentrations of undecided outcomes. They are mainly around an SLogL of zero as expected. The next steps will diffuse these areas in preparation for the last <strong>conquer</strong> step.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3622" aria-expanded="false" aria-controls="rcode-643E0F3622"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3622"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>), <span class="kw">aes</span>(<span class="dt">x=</span>Pclass, <span class="dt">y=</span>SLogL)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">color=</span>Survived)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_grid</span>(  . <span class="op">~</span><span class="st"> </span>TFreq,  <span class="dt">labeller=</span>label_both) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"SLogL vs Pclass vs TFreq"</span>)</code></pre></div></div>
+<p><img src="./unnamed-chunk-21-1.png" width="672"></p>
+</div>
+</div>
+<div id="adjusting-slogl-according-to-groups" class="section level1">
+<h1><span class="header-section-number">5</span> Adjusting SLogL according to groups</h1>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3623" aria-expanded="false" aria-controls="rcode-643E0F3623"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3623"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>), <span class="kw">aes</span>(<span class="dt">x=</span>FFreq, <span class="dt">y=</span>TFreq, <span class="dt">color=</span>Survived, <span class="dt">alpha=</span><span class="fl">0.5</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_count</span>(<span class="dt">position=</span><span class="kw">position_dodge</span>(<span class="dt">width=</span><span class="dv">5</span>)) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"Ticket and Fare Frequencies"</span>);</code></pre></div></div>
+<p><img src="./unnamed-chunk-22-1.png" width="672"></p>
+<div id="next-we-reward-or-penalize-groups-of-people" class="section level2">
+<h2><span class="header-section-number">5.1</span> Next we reward or penalize groups of people</h2>
+<p>Group sizes have been argued as one of the driving factors for survival in many of the earlier kernels. Large groups may had a harder time to organize themselves moving towards the life boats.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3624" aria-expanded="false" aria-controls="rcode-643E0F3624"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3624"><pre class="sourceCode r"><code class="sourceCode r">ticket_stats &lt;-<span class="st"> </span>comb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Ticket) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarize</span>(<span class="dt">l =</span> <span class="kw">length</span>(Survived), <span class="dt">na =</span> <span class="kw">sum</span>(<span class="kw">is.na</span>(Survived)), <span class="dt">c =</span> <span class="kw">sum</span>(<span class="kw">as.numeric</span>(Survived)<span class="op">-</span><span class="dv">1</span>, <span class="dt">na.rm=</span>T));</code></pre></div></div>
+<div id="by-increasing-the-log-likelihood-score-for-groups-larger-than-one-that-have-survivors" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> By increasing the log likelihood score for groups larger than one that have survivors</h3>
+<p>Note we apply this bias only to groups that contain individuals we need to predict. Applying to all seems to add noise. It is something that’s worth more investigation (version 54 adds the note below).</p>
+<p>Note: Daliun2 was the first to ask for mode details about the next block and Martin Krasser asked for more details at version 53. We can apply the same bias to the entire set by removing <code>ticket_stats$na[i] &gt; 0 &amp;</code> in the next block. Thanks to Martin, I decided to revisit this section in the eyes of cross validation (which I didn’t have in earlier versions of this kernel). The interesting observation is that by applying the bias to all, the cross validation goes up but the standard deviation of the cross validation also goes up, which confirms the model gets noisier. With respect to public score, it appears the maintaining the standard deviation low is more important.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3625" aria-expanded="false" aria-controls="rcode-643E0F3625"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3625"><pre class="sourceCode r"><code class="sourceCode r"><span class="cf">for</span> ( i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(ticket_stats)) {
+    plist &lt;-<span class="st"> </span><span class="kw">which</span>(comb<span class="op">$</span>Ticket<span class="op">==</span>ticket_stats<span class="op">$</span>Ticket[i]);
+    <span class="cf">if</span>(ticket_stats<span class="op">$</span>na[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>ticket_stats<span class="op">$</span>l[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span> <span class="op">&amp;</span><span class="st"> </span>ticket_stats<span class="op">$</span>c[i] <span class="op">&gt;</span><span class="st"> </span><span class="dv">0</span>) {
+            comb<span class="op">$</span>SLogL[plist] &lt;-<span class="st"> </span>comb<span class="op">$</span>SLogL[plist] <span class="op">+</span><span class="st"> </span><span class="dv">3</span>;
+    }
+}</code></pre></div></div>
+</div>
+<div id="the-sconst-variable-was-used-to-penalize-singles-prior-to-version-30" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> The sconst variable was used to penalize singles prior to version 30</h3>
+<p>However, after testing a range of small constants (positive or negative other than 0), we concluded that this is being used by the final optimizer to differentiate singles from not singles rather than a being interpreted directly as penalty or reward.</p>
+<p>Motivated Akshay’s question in the comments section, I decided to dig a little deeper here. I checked the differences in the output when <strong>sconst</strong> was set to zero. We can find that when we do so, 27 females in the Single category in Pclass 3 switch state from survived to perished. No other changes are observed in the output. Earlier we commented that by just looking at Sex and Pclass chart, females in Pclass 3 had a fifty-fifty chance. This extra piece of information breaks that balance and creates a big (favorable to a better cross validation and public score) swing in the output.</p>
+<p>More comments and code to follow on this. Stay tuned.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3626" aria-expanded="false" aria-controls="rcode-643E0F3626"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3626"><pre class="sourceCode r"><code class="sourceCode r">sconst &lt;-<span class="st"> </span><span class="op">-</span><span class="fl">2.1</span>;
+comb<span class="op">$</span>SLogL[comb<span class="op">$</span>GID<span class="op">==</span><span class="st">"Single"</span>] &lt;-<span class="st"> </span>comb<span class="op">$</span>SLogL[comb<span class="op">$</span>GID<span class="op">==</span><span class="st">"Single"</span>] <span class="op">-</span><span class="st"> </span>sconst;</code></pre></div></div>
+</div>
+<div id="by-penalizing-large-group-sizes-see-tfreq-vs-pclass-vs-slogl-graph" class="section level3">
+<h3><span class="header-section-number">5.1.3</span> By penalizing large group sizes (See TFreq vs Pclass vs SLogL graph)</h3>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3627" aria-expanded="false" aria-controls="rcode-643E0F3627"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3627"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>SLogL[comb<span class="op">$</span>TFreq <span class="op">==</span><span class="st">  </span><span class="dv">7</span>] &lt;-<span class="st"> </span>comb<span class="op">$</span>SLogL[comb<span class="op">$</span>TFreq <span class="op">==</span><span class="st"> </span><span class="dv">7</span>]  <span class="op">-</span><span class="st"> </span><span class="dv">3</span>;
+comb<span class="op">$</span>SLogL[comb<span class="op">$</span>TFreq <span class="op">==</span><span class="st">  </span><span class="dv">8</span>] &lt;-<span class="st"> </span>comb<span class="op">$</span>SLogL[comb<span class="op">$</span>TFreq <span class="op">==</span><span class="st"> </span><span class="dv">8</span>]  <span class="op">-</span><span class="st"> </span><span class="dv">1</span>;
+comb<span class="op">$</span>SLogL[comb<span class="op">$</span>TFreq <span class="op">==</span><span class="st"> </span><span class="dv">11</span>] &lt;-<span class="st"> </span>comb<span class="op">$</span>SLogL[comb<span class="op">$</span>TFreq <span class="op">==</span><span class="st"> </span><span class="dv">11</span>] <span class="op">-</span><span class="st"> </span><span class="dv">3</span>;</code></pre></div></div>
+</div>
+<div id="by-promoting-high-likelihood-of-survival-for-minors-in-pclass-1-and-pclass-2." class="section level3">
+<h3><span class="header-section-number">5.1.4</span> By promoting high likelihood of survival for Minors in Pclass 1 and Pclass 2.</h3>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3628" aria-expanded="false" aria-controls="rcode-643E0F3628"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3628"><pre class="sourceCode r"><code class="sourceCode r">comb<span class="op">$</span>SLogL[comb<span class="op">$</span>Minor<span class="op">==</span><span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">8</span>;</code></pre></div></div>
+</div>
+</div>
+<div id="plot-slogl-after-adjustments" class="section level2">
+<h2><span class="header-section-number">5.2</span> Plot SLogL after adjustments</h2>
+<p>Note how the previous steps diffused previously bundled areas. Now we may choose an optimizer algorithm to perform the final classification in the <strong>conquer</strong> stage of this process.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3629" aria-expanded="false" aria-controls="rcode-643E0F3629"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3629"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>), <span class="kw">aes</span>(<span class="dt">x=</span>Pclass, <span class="dt">y=</span>SLogL)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_jitter</span>(<span class="kw">aes</span>(<span class="dt">color=</span>Survived)) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">facet_grid</span>(  . <span class="op">~</span><span class="st"> </span>TFreq,  <span class="dt">labeller=</span>label_both) <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">"SLogL vs Pclass vs TFreq"</span>)</code></pre></div></div>
+<p><img src="./unnamed-chunk-28-1.png" width="672"></p>
+</div>
+</div>
+<div id="conquer" class="section level1">
+<h1><span class="header-section-number">6</span> Conquer</h1>
+<p>In this stage we simply perform the final prediction using just the target <em>Survived</em> and feature <em>SLogL</em> alone. KNN is used in the kernel but replacing it by ‘rf’ lets the optimization be done by the random forest algorithm. Random forest and other algorithms such as treebag all produce the same output. It indirectly demonstrates the SLogL feature after adjustments seems to have a smooth distribution in space and many optimization algorithms have no trouble finding a solution for it.</p>
+<div id="cross-validation" class="section level2">
+<h2><span class="header-section-number">6.1</span> Cross validation</h2>
+<p>The next chunk models, predicts and prints the cross validation. Cross validation is an essential step in competitions to help up us not only calibrate the parameters of our model but estimate the prediction accuracy with unseen data.</p>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3630" aria-expanded="false" aria-controls="rcode-643E0F3630"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3630"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">2017</span>);
+trControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="dt">method=</span><span class="st">"repeatedcv"</span>, <span class="dt">number=</span><span class="dv">7</span>, <span class="dt">repeats =</span> <span class="dv">5</span>); 
+fms &lt;-<span class="st"> </span><span class="kw">formula</span>(<span class="st">"Survived ~ SLogL"</span>); 
+model_m &lt;-<span class="st"> </span><span class="kw">train</span>(fms, <span class="dt">data =</span> comb <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">filter</span>(Set<span class="op">==</span><span class="st">"Train"</span>),
+     <span class="dt">metric=</span><span class="st">"Accuracy"</span>, <span class="dt">trControl =</span> trControl, <span class="dt">method =</span> <span class="st">"knn"</span>); 
+comb<span class="op">$</span>Pred &lt;-<span class="st"> </span><span class="kw">predict</span>(model_m, comb);
+<span class="kw">print</span>(model_m<span class="op">$</span>results)</code></pre></div></div>
+<pre><code>##   k  Accuracy     Kappa AccuracySD    KappaSD
+## 1 5 0.8246958 0.6107519 0.02569013 0.05892397
+## 2 7 0.8222246 0.6040849 0.02141447 0.04955000
+## 3 9 0.8193034 0.5968337 0.02135468 0.04990704</code></pre>
+<p>Note how the cross validation Accuracy score is within very close range of what this kernel obtains as a public score (0.82296), which demonstrates how over fitting is being avoided while achieving a high accuracy.</p>
+</div>
+<div id="write-submission-file" class="section level2">
+<h2><span class="header-section-number">6.2</span> Write submission file</h2>
+<div class="sourceCode"><div class="row"><div class="col-md-12"><button type="button" class="btn btn-default btn-xs code-folding-btn pull-right" data-toggle="collapse" data-target="#rcode-643E0F3631" aria-expanded="false" aria-controls="rcode-643E0F3631"><span>Code</span></button></div></div><div class="collapse r-code-collapse" id="rcode-643E0F3631"><pre class="sourceCode r"><code class="sourceCode r">df_final &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">PassengerId =</span> comb<span class="op">$</span>PassengerId[test_index], <span class="dt">Survived=</span>comb<span class="op">$</span>Pred[test_index]);
+<span class="kw">write.csv</span>(df_final, <span class="kw">paste0</span>(outpath,<span class="st">"pred_divconq.csv"</span>), <span class="dt">row.names =</span>F, <span class="dt">quote=</span>F)</code></pre></div></div>
+</div>
+</div>
+<div id="conclusions" class="section level1">
+<h1><span class="header-section-number">7</span> Conclusions</h1>
+<p>A good public score can be achieved using the approach of engineering a single scalar (SLogL) and then running a final optimization on top of it. The used method can be seen as <strong>boosting</strong> or a form of <strong>meta-algorithm</strong>. Cross validation of the model demonstrates that the achieved public score of <strong>0.82296</strong> is very close to predictions.</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<script src="./manifest.js.download"></script><script src="./vendor.js.download"></script><script src="./notebookViewer.js.download"></script>
+<div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Math-italic, sans-serif;"></div></div></body></html>
